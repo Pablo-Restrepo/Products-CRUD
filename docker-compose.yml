@@ -1,8 +1,14 @@
 version: "3.9"
 services:
-  productscrud:
+  productscrud-backend:
     build: ./productscrud-backend
     container_name: productscrud-backend-container
     restart: always
     ports:
       - "8080:8080"
+  productscrud-frontend:
+    build: ./productscrud-frontend
+    container_name: productscrud-frontend-container
+    restart: always
+    ports:
+      - "3000:3000"
