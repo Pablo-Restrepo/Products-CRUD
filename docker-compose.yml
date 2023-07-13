@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  productscrud:
+    build: .
+    container_name: productscrud-container
+    restart: always
+    ports:
+      - "8080:8080"
