@@ -1,0 +1,38 @@
+.HeaderComponent {
+    width: 100%;
+    background-color: black;
+    padding: 10px 15px 10px 15px;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.HeaderComponent-a {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.HeaderComponent-button {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 16px;
+    background: #42FF00;
+    width: 78px;
+    height: 45px;
+    padding: 4px 4px 4px 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width:600px) {
+    .HeaderComponent-button {
+        display: flex;
+    }
+}
