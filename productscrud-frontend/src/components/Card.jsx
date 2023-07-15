@@ -3,7 +3,7 @@ import React from 'react'
 import image from '../assets/image.jpg'
 import './Card.css';
 
-function Card() {
+const Card = ({ product }) => {
     return (
         <div className='card'>
             <div className='image-container'>
@@ -13,10 +13,10 @@ function Card() {
             <div className='card-content'>
                 <div className='card-content-flex'>
                     <div className='card-name-container'>
-                        <h3 className='card-name'>Camisa OverSize Talla M</h3>
+                        <h3 className='card-name'>{product.name}</h3>
                     </div>
                     <div className='card-price-container'>
-                        <h3 className='card-price'>$40.000</h3>
+                        <h3 className='card-price'>${product.price}</h3>
                     </div>
                 </div>
 
@@ -42,12 +42,7 @@ function Card() {
                 </div>
                 <div className='card-descripcion'>
                     <p className='descripcion'>
-                        Lorem ipsum dolor sit amet,
-                        consectetur adipisicing elit.
-                        Eligendi non quis exercitationem
-                        culpa nesciunt nihil aut nostrum
-                        explicabo reprehenderit optio amet
-                        ab temporibus asperiores quasi cupiditate.
+                        {product.description}
                     </p>
                 </div>
             </div>
