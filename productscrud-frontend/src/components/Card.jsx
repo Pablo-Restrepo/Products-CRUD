@@ -1,13 +1,17 @@
 import React from 'react'
 
-import image from '../assets/image.jpg'
+import defaultimg from '../assets/default.jpg'
 import './Card.css';
 
 const Card = ({ product }) => {
     return (
         <div className='card'>
             <div className='image-container'>
-                <img src={image} alt='image' />
+                {product.image ? (
+                    <img src={product.image} alt='image' />
+                ) : (
+                    <img src={defaultimg} alt='default-image' />
+                )}
             </div>
 
             <div className='card-content'>
