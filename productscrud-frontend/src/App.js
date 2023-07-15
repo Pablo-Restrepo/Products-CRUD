@@ -1,12 +1,12 @@
 import './App.css';
 import HeaderComponent from './components/HeaderComponent';
-import Card from './components/Card';
+import BodyComponent from './components/BodyComponent';
 
 function App() {
   return (
     <div className='App'>
       <HeaderComponent />
-      <Card />
+      <BodyComponent />
     </div>
   );
 }
