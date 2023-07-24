@@ -1,0 +1,144 @@
+body.active-modal {
+    overflow-y: hidden;
+}
+
+.modal {
+    width: 100vw;
+    height: 100vh;
+    top: 65px;
+    position: fixed;
+}
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    color: black;
+}
+
+.overlay {
+    background: rgba(49, 49, 49, 0.8);
+}
+
+.modal-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 20px;
+    border-radius: 25px;
+    min-width: 370px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+}
+
+.image-upload-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 240px;
+    cursor: pointer;
+    border-radius: 25px;
+    background: #dddddd;
+    margin-bottom: 14px;
+}
+
+.image-upload-container h2 {
+    color: #878787;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.name-price-container {
+    display: flex;
+    margin-bottom: 14px;
+}
+
+.name-container {
+    width: 225px;
+    height: 40px;
+    margin-right: 14px;
+}
+
+.name-container input {
+    width: 225px;
+    height: 40px;
+    padding-left: 15px;
+    border-radius: 25px;
+    background: #dddddd;
+    color: #878787;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.price-container input {
+    width: 155px;
+    height: 40px;
+    padding-left: 15px;
+    border-radius: 25px;
+    background: #dddddd;
+    color: #878787;
+    font-size: 15px;
+    font-weight: 600
+}
+
+.description-container {
+    margin-bottom: 14px;
+}
+
+.description-container textarea {
+    width: 394px;
+    height: 130px;
+    padding-left: 15px;
+    padding-top: 10px;
+    border-radius: 25px;
+    background: #dddddd;
+    color: #878787;
+    font-size: 15px;
+    resize: none;
+    font-weight: 600
+}
+
+.create-container {
+    display: flex;
+    width: 394px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 20px;
+    background: #42FF00;
+    cursor: pointer;
+}
+
+.create-container button {
+    cursor: pointer;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.file-upload-input {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    height: 45%;
+    outline: none;
+    opacity: 0;
+    cursor: pointer;
+}
