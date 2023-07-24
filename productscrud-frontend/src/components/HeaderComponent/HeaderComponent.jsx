@@ -5,7 +5,7 @@ const HeaderComponent = ({ toggleModal }) => {
     return (
         <header className='HeaderComponent'>
             <h1 className='HeaderComponent-h1'>
-                <a href='#' className='HeaderComponent-a'>
+                <a href='https://github.com/Pablo736/Products-CRUD' className='HeaderComponent-a'>
                     ProductsCRUD
                 </a>
             </h1>

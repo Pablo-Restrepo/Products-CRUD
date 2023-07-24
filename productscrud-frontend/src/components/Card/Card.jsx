@@ -1,6 +1,6 @@
 import React from 'react'
 
-import defaultimg from '../assets/default.jpg'
+import defaultimg from '../../assets/default.jpg'
 import './Card.css';
 
 const Card = ({ product }) => {
@@ -8,9 +8,9 @@ const Card = ({ product }) => {
         <div className='card'>
             <div className='image-container'>
                 {product.image ? (
-                    <img src={product.image} alt='image' />
+                    <img src={product.image} alt='product' />
                 ) : (
-                    <img src={defaultimg} alt='default-image' />
+                    <img src={defaultimg} alt='default-product' />
                 )}
             </div>
 

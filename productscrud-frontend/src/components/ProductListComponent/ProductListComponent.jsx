@@ -2,8 +2,8 @@ import './ProductListComponent.css';
 
 import React, { useEffect, useState } from 'react';
 
-import Card from './Card';
-import ProductService from '../services/ProductService';
+import Card from '../Card/Card';
+import ProductService from '../../services/ProductService';
 
 const ProductListComponent = () => {
 
