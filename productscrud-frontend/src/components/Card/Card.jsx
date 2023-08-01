@@ -2,19 +2,27 @@ import React from 'react'
 
 import defaultimg from '../../assets/default.jpg'
 import './Card.css';
+import ProductService from '../../services/ProductService';
 
-const Card = ({ product }) => {
+const Card = ({ product, aux }) => {
+    const deleteProduct = (productId) => {
+        ProductService.deleteProduct(productId).then((response) => {
+
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+
     return (
         <div className='card'>
-            <div className='image-container'>
-                {product.image ? (
-                    <img src={product.image} alt='product' />
-                ) : (
-                    <img src={defaultimg} alt='default-product' />
-                )}
-            </div>
-
             <div className='card-content'>
+                <div className='image-container'>
+                    {product.image ? (
+                        <img src={product.image} alt='product' />
+                    ) : (
+                        <img src={defaultimg} alt='default-product' />
+                    )}
+                </div>
                 <div className='card-content-flex'>
                     <div className='card-name-container'>
                         <h3 className='card-name'>{product.name}</h3>
@@ -33,7 +41,7 @@ const Card = ({ product }) => {
                         </button>
                     </div>
                     <div className='card-button'>
-                        <button className='delete-button'>
+                        <button className='delete-button' onClick={() => deleteProduct(product.id)} >
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="-2 -2 20 20" fill="none">
                                 <path d="M15.8333 3.33333H12.9167L12.0833 2.5H7.91666L7.08332 3.33333H4.16666V5H15.8333M4.99999 15.8333C4.99999 16.2754 5.17558 16.6993 5.48815 17.0118C5.80071 17.3244 6.22463 17.5 6.66666 17.5H13.3333C13.7754 17.5 14.1993 17.3244 14.5118 17.0118C14.8244 16.6993 15 16.2754 15 15.8333V5.83333H4.99999V15.8333Z" fill="#FF0000" />
                             </svg>
@@ -50,7 +58,7 @@ const Card = ({ product }) => {
                     </p>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

@@ -3,6 +3,7 @@ import HeaderComponent from './components/HeaderComponent/HeaderComponent';
 import Modal from './components/Modal/Modal';
 import ProductListComponent from './components/ProductListComponent/ProductListComponent';
 import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -13,9 +14,17 @@ function App() {
 
   return (
     <div className='App'>
-      <HeaderComponent toggleModal={toggleModal} />
-      <ProductListComponent />
-      <Modal modalOpen={modalOpen} toggleModal={toggleModal} />
+      <BrowserRouter>
+        <HeaderComponent toggleModal={toggleModal} />
+        <div className='container'>
+          <Routes>
+            <Route exact path='/' element={<ProductListComponent />}></Route>
+            <Route path='/clientes' element={<ProductListComponent />}></Route>
+            <Route path='/add-product' element={<Modal />}></Route>
+          </Routes>
+        </div>
+
+      </BrowserRouter>
     </div>
   );
 }

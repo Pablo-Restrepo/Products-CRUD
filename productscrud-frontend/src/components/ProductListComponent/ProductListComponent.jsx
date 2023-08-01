@@ -24,7 +24,6 @@ const ProductListComponent = () => {
                 <Card key={index} product={product} />
             ))}
         </div>
-
     )
 }
 

@@ -14,6 +14,13 @@
     margin: 10px;
 }
 
+.image-container,
+.card-content-flex,
+.card-container-buttons,
+.card-descripcion-name {
+    padding-bottom: 5px;
+}
+
 .image-container {
     overflow: hidden;
 }
@@ -27,26 +34,29 @@
     border-radius: 15px;
 }
 
+.card-content-flex {
+    display: flex;
+}
+
 .card-name-container {
     font-size: 20px;
     max-width: 300px;
-    padding-top: 10px;
-    padding-bottom: 5px;
 }
 
 .card-price-container {
     font-size: 22px;
-    display: flex;
+    margin-left: auto;
+    padding-left: 5px;
 }
 
 .card-descripcion-name {
     font-size: 13px;
-    padding-bottom: 4px;
 }
 
 .card-descripcion {
     font-size: 13px;
     line-height: normal;
+    overflow: hidden;
 }
 
 .card-button {
@@ -55,29 +65,24 @@
     padding: 2px 2px 2px 2px;
     border-radius: 6px;
     background: #EFEFEF;
-
 }
 
 .card-content-flex {
     display: flex;
     align-items: center;
-
 }
 
 .card-container-buttons {
     display: flex;
     align-items: center;
-    padding-bottom: 5px;
 }
 
 .card-button {
     margin-right: 8px;
-
 }
 
 .edit-button {
     cursor: pointer;
-
 }
 
 .delete-button {
