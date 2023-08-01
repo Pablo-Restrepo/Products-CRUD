@@ -10,12 +10,12 @@ textarea {
     display: flex;
     justify-content: center;
     align-items: top;
-    margin: 20px;
+    margin: 30px;
 }
 
 .add-product-form h2 {
-    margin-bottom: 20px;
-    font-size: 30px;
+    margin-bottom: 30px;
+    font-size: 28px;
     font-weight: 700;
 }
 

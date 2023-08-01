@@ -1,7 +1,7 @@
 import React from 'react'
 
 import defaultimg from '../../assets/default.jpg'
-import './Card.css';
+import './CardComponent.css';
 import ProductService from '../../services/ProductService';
 
 const Card = ({ product, aux }) => {

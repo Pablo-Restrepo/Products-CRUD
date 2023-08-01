@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './Modal.css';
-import ImageInput from './ImageInput';
+import './AddProductComponent.css';
+import ImageInput from './ImageInputComponent';
 import ProductService from '../../services/ProductService';
 
 const Modal = () => {

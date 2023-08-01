@@ -1,6 +1,6 @@
 import './App.css';
 import HeaderComponent from './components/HeaderComponent/HeaderComponent';
-import Modal from './components/Modal/Modal';
+import Modal from './components/Modal/AddProductComponent';
 import ProductListComponent from './components/ProductListComponent/ProductListComponent';
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';

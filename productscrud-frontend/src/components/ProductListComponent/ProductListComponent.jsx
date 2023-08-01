@@ -2,7 +2,7 @@ import './ProductListComponent.css';
 
 import React, { useEffect, useState } from 'react';
 
-import Card from '../Card/Card';
+import Card from '../Card/CardComponent';
 import ProductService from '../../services/ProductService';
 
 const ProductListComponent = () => {

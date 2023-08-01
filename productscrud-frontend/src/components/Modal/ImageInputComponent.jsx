@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Modal'
+import './AddProductComponent'
 export const ImageInput = () => {
     const [selectedFile, setSelectedFile] = useState()
     const [preview, setPreview] = useState()
