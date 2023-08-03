@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './AddProductComponent'
-export const ImageInput = () => {
-    const [selectedFile, setSelectedFile] = useState()
+export const ImageInput = ({ selectedFile, onSelectFile }) => {
     const [preview, setPreview] = useState()
 
     // create a preview as a side effect, whenever selected file is changed
@@ -18,19 +17,18 @@ export const ImageInput = () => {
         return () => URL.revokeObjectURL(objectUrl)
     }, [selectedFile])
 
-    const onSelectFile = e => {
+    const handleFileChange = (e) => {
         if (!e.target.files || e.target.files.length === 0) {
-            setSelectedFile(undefined)
-            return
+            onSelectFile(undefined);
+            return;
         }
 
-        // I've kept this example simple by using the first image instead of multiple
-        setSelectedFile(e.target.files[0])
-    }
+        onSelectFile(e.target.files[0]);
+    };
 
     return (
         <>
-            <input type='file' onChange={onSelectFile} />
+            <input type='file' name="file" onChange={handleFileChange} />
             {selectedFile && <img src={preview} />}
             {!selectedFile ? (
                 <>

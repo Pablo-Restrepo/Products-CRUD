@@ -37,8 +37,8 @@ public class Product implements Serializable {
     @NotNull(message = "El precio es obligatorio")
     private Double price;
 
-    @Column(name = "image")
     @Lob
+    @Column(name = "image")
     private String image;
 
     @Column(name = "created_at")

@@ -3,7 +3,8 @@ input,
 h2,
 button,
 textarea {
-    color: black
+    color: black;
+    resize: none;
 }
 
 .add-product {

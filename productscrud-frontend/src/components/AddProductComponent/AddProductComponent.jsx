@@ -7,35 +7,49 @@ const Modal = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
-    const [image, setImage] = useState(null);
+    const [imagen, setImage] = useState(null);
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-
-        reader.onloadend = () => {
-            const base64String = reader.result.split(",")[1];
-            setImage(base64String);
-        };
-
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    };
-
-    const saveProduct = (e) => {
+    const saveProduct = async (e) => {
         e.preventDefault();
-        const product = { name, description, price };
-        if (name.trim() === '' ||
-            price.trim() === '') {
-            alert('Hay campos vacios');
+
+        if (!imagen) {
+            alert('Selecciona una imagen');
             return;
         }
-        ProductService.createProduct(product).then((response) => {
-            console.log(response.data);
-        }).catch(error => {
-            console.log(error);
-        })
+
+        const image = await convertImageToBase64(imagen);
+
+        const product = { name, description, price, image };
+        console.log(image);
+
+        if (name.trim() === '' || price.trim() === '') {
+            alert('Hay campos vacíos');
+            return;
+        }
+
+        ProductService.createProduct(product)
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+
+    const convertImageToBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                resolve(reader.result.split(',')[1]);
+            };
+
+            reader.onerror = (error) => {
+                reject(error);
+            };
+
+            reader.readAsDataURL(file);
+        });
     };
 
     return (
@@ -45,7 +59,7 @@ const Modal = () => {
                 <form>
                     <div class="form-group">
                         <div className='form-group-img-upload'>
-                            <ImageInput />
+                            <ImageInput selectedFile={imagen} onSelectFile={setImage} />
                         </div>
                     </div>
                     <div class="form-group">
