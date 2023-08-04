@@ -16,7 +16,7 @@ const ProductListComponent = () => {
         }).catch(error => {
             console.log(error);
         })
-    }, [])
+    }, []);
 
     return (
         <div className='Cards'>
@@ -24,7 +24,7 @@ const ProductListComponent = () => {
                 <CardComponent key={index} product={product} />
             ))}
         </div>
-    )
-}
+    );
+};
 
 export default ProductListComponent

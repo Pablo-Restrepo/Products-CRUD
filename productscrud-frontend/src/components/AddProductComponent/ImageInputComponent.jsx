@@ -4,6 +4,14 @@ import './AddProductComponent'
 export const ImageInputComponent = ({ selectedFile, onSelectFile, id }) => {
     const [preview, setPreview] = useState()
 
+    const handleFileChange = (e) => {
+        if (!e.target.files || e.target.files.length === 0) {
+            onSelectFile(undefined);
+            return;
+        }
+        onSelectFile(e.target.files[0]);
+    };
+
     useEffect(() => {
         if (!selectedFile) {
             setPreview(undefined)
@@ -24,14 +32,6 @@ export const ImageInputComponent = ({ selectedFile, onSelectFile, id }) => {
         return () => URL.revokeObjectURL(objectUrl)
     }, [selectedFile, id]);
 
-    const handleFileChange = (e) => {
-        if (!e.target.files || e.target.files.length === 0) {
-            onSelectFile(undefined);
-            return;
-        }
-        onSelectFile(e.target.files[0]);
-    };
-
     return (
         <>
             <input type='file' name="file" onChange={handleFileChange} />
@@ -45,7 +45,7 @@ export const ImageInputComponent = ({ selectedFile, onSelectFile, id }) => {
                 </>
             ) : null}
         </>
-    )
+    );
+};
 
-}
 export default ImageInputComponent;

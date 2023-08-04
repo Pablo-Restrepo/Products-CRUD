@@ -12,7 +12,7 @@ const CardComponent = ({ product }) => {
         }).catch(error => {
             console.log(error);
         })
-    }
+    };
 
     return (
         <div className='card' >
@@ -62,7 +62,7 @@ const CardComponent = ({ product }) => {
                 </div>
             </div>
         </div >
-    )
-}
+    );
+};
 
 export default CardComponent

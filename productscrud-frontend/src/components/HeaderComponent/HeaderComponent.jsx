@@ -22,7 +22,7 @@ const HeaderComponent = () => {
                 </button>
             </Link>
         </header>
-    )
-}
+    );
+};
 
 export default HeaderComponent

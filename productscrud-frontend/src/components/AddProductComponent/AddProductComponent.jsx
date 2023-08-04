@@ -11,25 +11,8 @@ const AddProductComponent = () => {
     const [imagen, setImage] = useState(null);
     const { id } = useParams();
 
-    useEffect(() => {
-        ProductService.getProductById(id).then((response) => {
-            setName(response.data.name);
-            setDescription(response.data.description);
-            setPrice(response.data.price);
-            setImage(response.data.image);
-        }).catch(error => {
-            console.log(error);
-        })
-    }, [id]);
-
-    const title = () => {
-        if (id) {
-            return <h2>Actualizar Producto</h2>;
-        }
-        else {
-            return <h2>Crear Producto</h2>;
-        }
-    };
+    const title = id ? "Actualizar Producto" : "Crear Producto";
+    const buttonLabel = id ? "Actualizar Producto" : "Crear Producto";
 
     const saveOrUpdateProduct = async (e) => {
         e.preventDefault();
@@ -66,10 +49,27 @@ const AddProductComponent = () => {
         });
     };
 
+    useEffect(() => {
+        if (!id) {
+            setName('');
+            setDescription('');
+            setPrice('');
+            setImage('');
+        }
+        ProductService.getProductById(id).then((response) => {
+            setName(response.data.name);
+            setDescription(response.data.description);
+            setPrice(response.data.price);
+            setImage(response.data.image);
+        }).catch(error => {
+            console.log(error);
+        })
+    }, [id]);
+
     return (
         <div className='add-product'>
             <div class="add-product-form">
-                <h2>{title()}</h2>
+                <h2>{title}</h2>
                 <form>
                     <div class="form-group">
                         <div className='form-group-img-upload'>
@@ -86,7 +86,9 @@ const AddProductComponent = () => {
                         <textarea id="description" name="description" rows="4" cols="50" placeholder="Descripción" value={description} onChange={(e) => setDescription(e.target.value)} />
                     </div>
                     <div className='form-group-button'>
-                        <button type="submit" onClick={(e) => saveOrUpdateProduct(e)}>Crear Producto</button>
+                        <button type="submit" onClick={(e) => saveOrUpdateProduct(e)}>
+                            {buttonLabel}
+                        </button>
                     </div>
                 </form>
             </div>
