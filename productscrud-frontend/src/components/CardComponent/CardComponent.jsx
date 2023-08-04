@@ -1,5 +1,4 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
 import defaultimg from '../../assets/default.jpg'
 import './CardComponent.css';
 import ProductService from '../../services/ProductService';
@@ -7,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Card = ({ product }) => {
 
-    const { id } = useParams();
+
 
     const deleteProduct = (productId) => {
         ProductService.deleteProduct(productId).then((response) => {
@@ -17,22 +16,13 @@ const Card = ({ product }) => {
         })
     }
 
-    useEffect(() => {
-        ClienteService.getCIienteById(id).then((response) => {
-            setNombre(response.data.nombre);
-            setApe11ido(response.data.apellido);
-            setEmai1(response.data.email);
-        }).catch(error => {
-            console.log(error);
-        })
-    })
+
 
     return (
         <div className='card' >
             <div className='card-content'>
                 <div className='image-container'>
                     {product.image ? (
-                        console.log(product),
                         < img src={`data:image/png;base64,${product.image}`} alt='product' />
                     ) : (
                         <img src={defaultimg} alt='default-product' />

@@ -16,4 +16,4 @@ INSERT INTO products (name, description, price, created_at)VALUES ('Instant Pot 
 
 INSERT INTO products (name, description, price, created_at)VALUES ('Dyson V11 Absolute', 'Aspiradora inalámbrica de alto rendimiento con tecnología de succión potente.', 599.99, NOW());
 
-INSERT INTO products (name, description, price, created_at)VALUES ('Kindle Paperwhite', 'E-reader con pantalla de alta resolución y luz frontal ajustable para una experiencia de lectura cómoda dchcs csdc scs csdcsdcs cscscs sdsdcsdcsdxcsdc sdcsdcsd csdc sdcsd csdcsd csdc sdcsd csdc sdc sdcd csdc sc .', 129.99, NOW());
+INSERT INTO products (name, description, price, created_at)VALUES ('Kindle Paperwhite', 'E-reader con pantalla de alta resolución y luz frontal ajustable para una experiencia de lectura cómoda.', 129.99, NOW());

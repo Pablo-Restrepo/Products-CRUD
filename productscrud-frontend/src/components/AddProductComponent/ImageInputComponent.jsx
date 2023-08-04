@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import './AddProductComponent'
-export const ImageInput = ({ selectedFile, onSelectFile }) => {
+export const ImageInput = ({ selectedFile, onSelectFile, id }) => {
     const [preview, setPreview] = useState()
 
     // create a preview as a side effect, whenever selected file is changed
     useEffect(() => {
+
         if (!selectedFile) {
             setPreview(undefined)
+            return
+        }
+
+        if (id) {
+            console.log('esta en ID')
+            setPreview(`data:image/png;base64,${selectedFile}`)
+        }
+
+        if (selectedFile.length % 4 == 0 && /^[A-Za-z0-9+/]+[=]{0,2}$/.test(selectedFile)) {
+            console.log('esta con data:')
             return
         }
 
@@ -40,5 +51,6 @@ export const ImageInput = ({ selectedFile, onSelectFile }) => {
             ) : null}
         </>
     )
+
 }
 export default ImageInput;

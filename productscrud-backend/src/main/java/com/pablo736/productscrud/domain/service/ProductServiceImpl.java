@@ -64,6 +64,8 @@ public class ProductServiceImpl implements IProductService {
         Product productUpdate = this.find(id);
         productUpdate.setName(product.getName());
         productUpdate.setPrice(product.getPrice());
+        productUpdate.setDescription(product.getDescription());
+        productUpdate.setImage(product.getImage());
         // Save the product
         Product updateProduct = repository.save(productUpdate);
         return updateProduct;
