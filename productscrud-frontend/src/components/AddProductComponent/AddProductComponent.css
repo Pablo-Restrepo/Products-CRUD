@@ -68,7 +68,6 @@ textarea {
 
 .form-group-img-upload:hover {
     transform: scale(1.02);
-    /* Escala la imagen al 120% de su tamaño original al hacer hover */
 }
 
 .form-group-img-upload input[type="file"] {

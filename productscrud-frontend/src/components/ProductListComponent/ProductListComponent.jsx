@@ -2,7 +2,7 @@ import './ProductListComponent.css';
 
 import React, { useEffect, useState } from 'react';
 
-import Card from '../CardComponent/CardComponent';
+import CardComponent from '../CardComponent/CardComponent';
 import ProductService from '../../services/ProductService';
 
 const ProductListComponent = () => {
@@ -21,7 +21,7 @@ const ProductListComponent = () => {
     return (
         <div className='Cards'>
             {products.map((product, index) => (
-                <Card key={index} product={product} />
+                <CardComponent key={index} product={product} />
             ))}
         </div>
     )

@@ -4,7 +4,7 @@ import './AddProductComponent.css';
 import ImageInput from './ImageInputComponent';
 import ProductService from '../../services/ProductService';
 
-const Modal = () => {
+const AddProductComponent = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -20,7 +20,7 @@ const Modal = () => {
         }).catch(error => {
             console.log(error);
         })
-    }, []);
+    }, [id]);
 
     const title = () => {
         if (id) {
@@ -33,53 +33,35 @@ const Modal = () => {
 
     const saveOrUpdateProduct = async (e) => {
         e.preventDefault();
-        const image = await convertImageToBase64(imagen);
 
+        const image = await convertImageToBase64(imagen);
         const product = { name, description, price, image };
 
-        /*if (name.trim() === '' || price.trim() === '') {
-            alert('Hay campos vacíos');
-            return;
-        }*/
         if (id) {
             ProductService.updateProduct(id, product).then((response) => {
                 console.log(response.data);
             }).catch(error => {
                 console.log(error);
             });
-        }
-        else {
-
-
-            if (!imagen) {
-                alert('Selecciona una imagen');
-                return;
-            }
-
-
-
+        } else {
             ProductService.createProduct(product).then((response) => {
                 console.log(response.data);
             }).catch(error => {
                 console.log(error);
             });
         }
-
-
     };
 
     const convertImageToBase64 = (file) => {
+        if (file == null) return;
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
-
             reader.onload = () => {
                 resolve(reader.result.split(',')[1]);
             };
-
             reader.onerror = (error) => {
                 reject(error);
             };
-
             reader.readAsDataURL(file);
         });
     };
@@ -91,7 +73,6 @@ const Modal = () => {
                 <form>
                     <div class="form-group">
                         <div className='form-group-img-upload'>
-
                             <ImageInput selectedFile={imagen} onSelectFile={setImage} id={id} />
                         </div>
                     </div>
@@ -102,7 +83,7 @@ const Modal = () => {
                         <input type="number" id="price" name="price" placeholder="Precio" value={price} onChange={(e) => setPrice(e.target.value)} required />
                     </div>
                     <div class="form-group">
-                        <textarea id="description" name="description" rows="4" cols="50" placeholder="Descripción" value={description} onChange={(e) => setDescription(e.target.value)} ></textarea>
+                        <textarea id="description" name="description" rows="4" cols="50" placeholder="Descripción" value={description} onChange={(e) => setDescription(e.target.value)} />
                     </div>
                     <div className='form-group-button'>
                         <button type="submit" onClick={(e) => saveOrUpdateProduct(e)}>Crear Producto</button>
@@ -113,4 +94,4 @@ const Modal = () => {
     );
 };
 
-export default Modal;
+export default AddProductComponent;

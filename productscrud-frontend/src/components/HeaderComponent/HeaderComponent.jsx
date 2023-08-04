@@ -1,6 +1,7 @@
-import './HeaderComponent.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import './HeaderComponent.css';
 
 const HeaderComponent = () => {
     return (
@@ -18,7 +19,8 @@ const HeaderComponent = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 37 37" fill="none">
                         <path d="M17.3438 2.16797L32.375 9.68359V28.4727L17.3438 35.9702L2.3125 28.4727V9.68359L17.3438 2.16797ZM28.6353 10.4062L17.3438 4.76953L12.9897 6.9375L24.209 12.6104L28.6353 10.4062ZM17.3438 16.043L21.6436 13.9111L10.4062 8.23828L6.05225 10.4062L17.3438 16.043ZM4.625 12.2852V27.0273L16.1875 32.8086V18.0664L4.625 12.2852ZM18.5 32.8086L30.0625 27.0273V12.2852L18.5 18.0664V32.8086Z" fill="white" />
                     </svg>
-                </button></Link>
+                </button>
+            </Link>
         </header>
     )
 }

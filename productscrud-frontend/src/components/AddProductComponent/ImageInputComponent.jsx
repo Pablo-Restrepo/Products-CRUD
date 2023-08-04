@@ -1,46 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import './AddProductComponent'
-export const ImageInput = ({ selectedFile, onSelectFile, id }) => {
+
+export const ImageInputComponent = ({ selectedFile, onSelectFile, id }) => {
     const [preview, setPreview] = useState()
 
-    // create a preview as a side effect, whenever selected file is changed
     useEffect(() => {
-
         if (!selectedFile) {
             setPreview(undefined)
             return
         }
 
         if (id) {
-            console.log('esta en ID')
             setPreview(`data:image/png;base64,${selectedFile}`)
         }
 
-        if (selectedFile.length % 4 == 0 && /^[A-Za-z0-9+/]+[=]{0,2}$/.test(selectedFile)) {
-            console.log('esta con data:')
+        if (selectedFile.length % 4 === 0 && /^[A-Za-z0-9+/]+[=]{0,2}$/.test(selectedFile)) {
             return
         }
 
         const objectUrl = URL.createObjectURL(selectedFile)
         setPreview(objectUrl)
 
-        // free memory when ever this component is unmounted
         return () => URL.revokeObjectURL(objectUrl)
-    }, [selectedFile])
+    }, [selectedFile, id]);
 
     const handleFileChange = (e) => {
         if (!e.target.files || e.target.files.length === 0) {
             onSelectFile(undefined);
             return;
         }
-
         onSelectFile(e.target.files[0]);
     };
 
     return (
         <>
             <input type='file' name="file" onChange={handleFileChange} />
-            {selectedFile && <img src={preview} />}
+            {selectedFile && <img src={preview} alt='product' />}
             {!selectedFile ? (
                 <>
                     <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 50 50" fill="none">
@@ -53,4 +48,4 @@ export const ImageInput = ({ selectedFile, onSelectFile, id }) => {
     )
 
 }
-export default ImageInput;
+export default ImageInputComponent;
