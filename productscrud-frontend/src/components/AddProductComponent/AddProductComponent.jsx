@@ -43,6 +43,7 @@ const AddProductComponent = () => {
 
     const convertImageToBase64 = (file) => {
         if (file == null) return;
+        if (file.length % 4 === 0 && /^[A-Za-z0-9+/]+[=]{0,2}$/.test(file)) return file;
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.onload = () => {
@@ -74,21 +75,21 @@ const AddProductComponent = () => {
 
     return (
         <div className='add-product'>
-            <div class="add-product-form">
+            <div className="add-product-form">
                 <h2>{title}</h2>
                 <form>
-                    <div class="form-group">
+                    <div className="form-group">
                         <div className='form-group-img-upload'>
                             <ImageInput selectedFile={imagen} onSelectFile={setImage} id={id} />
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <input type="text" id="nombre" name="name" placeholder="Nombre" value={name} onChange={(e) => setName(e.target.value)} required />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <input type="number" id="price" name="price" placeholder="Precio" value={price} onChange={(e) => setPrice(e.target.value)} required />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <textarea id="description" name="description" rows="4" cols="50" placeholder="Descripción" value={description} onChange={(e) => setDescription(e.target.value)} />
                     </div>
                     <div className='form-group-button'>
