@@ -1,18 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import defaultimg from '../../assets/default.jpg'
 import ProductService from '../../services/ProductService';
 import { Link } from 'react-router-dom';
+import PopUpComponent from '../PopUpComponent/PopUpComponent';
 
 import './CardComponent.css';
 
-const CardComponent = ({ product }) => {
+const CardComponent = ({ product, onDelete }) => {
+    const [popupMessage, setPopupMessage] = useState('');
+    const [showPopup, setShowPopup] = useState(false);
 
     const deleteProduct = (productId) => {
-        ProductService.deleteProduct(productId).then((response) => {
-        }).catch(error => {
-            console.log(error);
-        })
-    };
+        ProductService.deleteProduct(productId)
+            .then(() => {
+                onDelete();
+                setPopupMessage('Producto borrado correctamente');
+                setShowPopup(true);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };;
 
     return (
         <div className='card' >
@@ -61,7 +69,8 @@ const CardComponent = ({ product }) => {
                     </p>
                 </div>
             </div>
-        </div >
+            <PopUpComponent message={popupMessage} show={showPopup} onClose={() => setShowPopup(false)} />
+        </div>
     );
 };
 

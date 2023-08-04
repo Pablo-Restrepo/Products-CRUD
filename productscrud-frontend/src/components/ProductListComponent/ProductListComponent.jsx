@@ -9,19 +9,25 @@ const ProductListComponent = () => {
 
     const [products, setProducts] = useState([]);
 
+    const fetchProducts = () => {
+        ProductService.getAllProducts()
+            .then(response => {
+                setProducts(response.data);
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+
     useEffect(() => {
-        ProductService.getAllProducts().then(response => {
-            setProducts(response.data);
-            console.log(response.data);
-        }).catch(error => {
-            console.log(error);
-        })
+        fetchProducts();
     }, []);
 
     return (
         <div className='Cards'>
             {products.map((product, index) => (
-                <CardComponent key={index} product={product} />
+                <CardComponent key={index} product={product} onDelete={() => fetchProducts()} />
             ))}
         </div>
     );

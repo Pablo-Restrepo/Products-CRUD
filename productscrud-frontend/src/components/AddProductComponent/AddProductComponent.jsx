@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './AddProductComponent.css';
 import ImageInput from './ImageInputComponent';
+import PopUpComponent from '../PopUpComponent/PopUpComponent';
 import ProductService from '../../services/ProductService';
 
 const AddProductComponent = () => {
@@ -9,6 +10,8 @@ const AddProductComponent = () => {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [imagen, setImage] = useState(null);
+    const [popupMessage, setPopupMessage] = useState('');
+    const [showPopup, setShowPopup] = useState(false);
     const { id } = useParams();
 
     const title = id ? "Actualizar Producto" : "Crear Producto";
@@ -16,18 +19,21 @@ const AddProductComponent = () => {
 
     const saveOrUpdateProduct = async (e) => {
         e.preventDefault();
-
         const image = await convertImageToBase64(imagen);
         const product = { name, description, price, image };
 
         if (id) {
             ProductService.updateProduct(id, product).then((response) => {
+                setPopupMessage('Producto actualizado correctamente');
+                setShowPopup(true);
                 console.log(response.data);
             }).catch(error => {
                 console.log(error);
             });
         } else {
             ProductService.createProduct(product).then((response) => {
+                setPopupMessage('Producto creado correctamente');
+                setShowPopup(true);
                 console.log(response.data);
             }).catch(error => {
                 console.log(error);
@@ -54,7 +60,7 @@ const AddProductComponent = () => {
             setName('');
             setDescription('');
             setPrice('');
-            setImage('');
+            setImage(null);
         }
         ProductService.getProductById(id).then((response) => {
             setName(response.data.name);
@@ -92,6 +98,7 @@ const AddProductComponent = () => {
                     </div>
                 </form>
             </div>
+            <PopUpComponent message={popupMessage} show={showPopup} onClose={() => setShowPopup(false)} />
         </div>
     );
 };
