@@ -10,5 +10,7 @@ services:
     build: ./productscrud-frontend
     container_name: productscrud-frontend-container
     restart: always
+    depends_on:
+      - productscrud-backend
     ports:
       - "3000:3000"
