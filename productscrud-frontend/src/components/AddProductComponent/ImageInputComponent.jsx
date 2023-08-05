@@ -13,18 +13,11 @@ export const ImageInputComponent = ({ selectedFile, onSelectFile, id }) => {
     };
 
     useEffect(() => {
-        if (!selectedFile) {
-            setPreview(undefined)
-            return
-        }
+        if (!selectedFile) { setPreview(undefined); return; }
 
-        if (id) {
-            setPreview(`data:image/png;base64,${selectedFile}`)
-        }
+        if (id) { setPreview(`data:image/png;base64,${selectedFile}`) }
 
-        if (selectedFile.length % 4 === 0 && /^[A-Za-z0-9+/]+[=]{0,2}$/.test(selectedFile)) {
-            return
-        }
+        if (selectedFile.length % 4 === 0 && /^[A-Za-z0-9+/]+[=]{0,2}$/.test(selectedFile)) { return; }
 
         const objectUrl = URL.createObjectURL(selectedFile)
         setPreview(objectUrl)
@@ -34,7 +27,7 @@ export const ImageInputComponent = ({ selectedFile, onSelectFile, id }) => {
 
     return (
         <>
-            <input type='file' name="file" onChange={handleFileChange} />
+            <input type='file' name="file" accept="image/*" onChange={handleFileChange} />
             {selectedFile && <img src={preview} alt='product' />}
             {!selectedFile ? (
                 <>

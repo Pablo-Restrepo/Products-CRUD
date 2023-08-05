@@ -9,7 +9,7 @@ const AddProductComponent = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
-    const [imagen, setImage] = useState(null);
+    const [imagenBase64, setImageBase64] = useState(null);
     const [popupMessage, setPopupMessage] = useState('');
     const [showPopup, setShowPopup] = useState(false);
     const { id } = useParams();
@@ -19,8 +19,16 @@ const AddProductComponent = () => {
 
     const saveOrUpdateProduct = async (e) => {
         e.preventDefault();
-        const image = await convertImageToBase64(imagen);
-        const product = { name, description, price, image };
+
+        if (!name || !price) {
+            setPopupMessage('Complete el nombre y el precio del producto.');
+            setShowPopup(true);
+            return;
+        }
+
+        const image = await convertImageToBase64(imagenBase64);
+        const createdAt = Date.now();
+        const product = { name, description, price, image, createdAt };
 
         if (id) {
             ProductService.updateProduct(id, product).then((response) => {
@@ -61,13 +69,13 @@ const AddProductComponent = () => {
             setName('');
             setDescription('');
             setPrice('');
-            setImage(null);
+            setImageBase64(null);
         }
         ProductService.getProductById(id).then((response) => {
             setName(response.data.name);
             setDescription(response.data.description);
             setPrice(response.data.price);
-            setImage(response.data.image);
+            setImageBase64(response.data.image);
         }).catch(error => {
             console.log(error);
         })
@@ -80,7 +88,7 @@ const AddProductComponent = () => {
                 <form>
                     <div className="form-group">
                         <div className='form-group-img-upload'>
-                            <ImageInput selectedFile={imagen} onSelectFile={setImage} id={id} />
+                            <ImageInput selectedFile={imagenBase64} onSelectFile={setImageBase64} id={id} />
                         </div>
                     </div>
                     <div className="form-group">
