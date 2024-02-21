@@ -37,7 +37,7 @@ Before you begin, make sure you have the following prerequisites installed:
 1. Clone the repository to your local machine using the following command:
 
 ```bash
-   git clone https://github.com/Pablo736/Products-CRUD
+   git clone https://github.com/Pablo-Restrepo/Products-CRUD
 ```
 
 2. Run the file `deploy.sh`:
